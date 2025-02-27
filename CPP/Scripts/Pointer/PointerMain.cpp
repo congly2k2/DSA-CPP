@@ -1,6 +1,12 @@
-﻿#include<iostream>
+﻿// ReSharper disable all
+#include<iostream>
+#include <memory>
 
 using namespace std;
+
+void HelloWorld() {
+    cout << "Hello World!" << endl;
+}
 
 void P1() {
     // "&" is used to get the address of a variable
@@ -33,10 +39,40 @@ void P3() {
     delete[] pArr;
 }
 
+void P4() {
+    auto (*pFunc)() = HelloWorld;
+    pFunc();
+}
+
+class A {
+    int n = 0;
+public:
+    static void show() {
+        cout << "Hello, A show!" << endl;
+    }
+
+    void internalShow() const {
+        cout << "Hello, A internalShow!" << this->n << endl;
+    }
+};
+
+void P5() {
+    auto p = &A::show;
+    p();
+
+    auto pA = new A();
+    pA->internalShow();
+}
+
+void P6() {
+    auto ptr = make_unique<int>(10);
+    cout << *ptr << endl;
+}
+
 int main() {
     freopen("CPP/Data/Data.in", "r", stdin);
     freopen("CPP/Data/Data.out", "w", stdout);
 
-    P3();
+    P5();
     return 0;
 }

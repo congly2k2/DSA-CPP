@@ -10,4 +10,5 @@ add_executable(_idea
     encodings.xml
     modules.xml
     vcs.xml
-    workspace.xml)
+    workspace.xml
+        ../CPP/Scripts/LeetCode.cpp)
